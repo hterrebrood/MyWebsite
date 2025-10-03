@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who is [Your Name]?</title>
+  <style>
+    @font-face {
+      font-family: 'In your face, Joffery!';
+      src: url('https://fonts.cdnfonts.com/s/19144/InYourFaceJoffery.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'In your face, Joffery!', 'Comic Sans MS', 'Comic Sans', cursive;
+      background: #fff;
+      color: #222;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.2em;
+    }
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0 20px 0;
+      gap: 20px;
+    }
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 2px solid #222;
+      border-radius: 16px;
+      padding: 12px 32px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      box-shadow: 2px 2px 0 #ccc;
+      margin: 8px;
+    }
+    .menu-btn:hover {
+      box-shadow: 4px 4px 0 #bbb;
+      background: #f0f0f0;
+    }
+    .icon {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
+    .contact {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      text-align: right;
+    }
+    .contact img {
+      width: 40px;
+      vertical-align: middle;
+    }
+    .contact span {
+      display: block;
+      font-size: 1em;
+      margin-top: 4px;
+    }
+    .visitor {
+      margin-top: 60px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact">
+    <a href="mailto:your@email.com"><img src="https://img.icons8.com/ios-filled/50/000000/chat.png" alt="Contact"></a>
+    <span>Contact me</span>
+  </div>
+  <h1>Who is [Your Name]?</h1>
+  <div class="menu">
+    <button class="menu-btn" onclick="alert('About me: [Add your info here]')">
+      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(80deg);" alt="About">
+      About me
+    </button>
+    <button class="menu-btn" onclick="alert('Experience: [Add your info here]')">
+      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: grayscale(100%);" alt="Experience">
+      Experience
+    </button>
+    <button class="menu-btn" onclick="alert('Projects: [Add your info here]')">
+      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(240deg);" alt="Projects">
+      Projects
+    </button>
+    <button class="menu-btn" onclick="alert('Testimonials: [Add your info here]')">
+      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(300deg);" alt="Testimonials">
+      Testimonials
+    </button>
+    <button class="menu-btn" onclick="alert('Anything else: [Add your info here]')">
+      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: grayscale(60%);" alt="Anything else">
+      Anything else
+    </button>
+  </div>
+  <div class="visitor" id="visitor-count">
+    You are visitor number: <span id="visitorNum">...</span>
+  </div>
+  <script>
+    // Simple visitor counter using localStorage
+    let visitorNum = localStorage.getItem('visitorNum');
+    if (!visitorNum) {
+      visitorNum = Math.floor(Math.random() * 100) + 1;
+      localStorage.setItem('visitorNum', visitorNum);
+    }
+    document.getElementById('visitorNum').textContent = visitorNum;
+  </script>
+</body>
+</html>
