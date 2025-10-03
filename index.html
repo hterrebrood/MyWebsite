@@ -105,12 +105,13 @@
     You are visitor number: <span id="visitorNum">...</span>
   </div>
   <script>
-    // Simple visitor counter using localStorage
+    // Simple visitor counter: starts at 0, increases by 1 each time page is opened
     let visitorNum = localStorage.getItem('visitorNum');
     if (!visitorNum) {
-      visitorNum = Math.floor(Math.random() * 100) + 1;
-      localStorage.setItem('visitorNum', visitorNum);
+      visitorNum = 0;
     }
+    visitorNum = parseInt(visitorNum, 10) + 1;
+    localStorage.setItem('visitorNum', visitorNum);
     document.getElementById('visitorNum').textContent = visitorNum;
   </script>
 </body>
