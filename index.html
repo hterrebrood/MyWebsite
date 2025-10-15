@@ -14,7 +14,7 @@
     body {
       font-family: 'In your face, Joffery!', 'Comic Sans MS', 'Comic Sans', cursive;
       /* User-requested background color */
-      background-color: #2596be;
+      background-color: #bbd5ed;
       color: #222;
       text-align: center;
       margin: 0;
@@ -37,7 +37,9 @@
       background: #fff;
       border: 2px solid #222;
       border-radius: 16px;
-      padding: 12px 32px;
+      padding: 12px 28px;
+      /* Ensure the button is tall enough to fit larger icons */
+      min-height: 64px;
       font-size: 1.3em;
       cursor: pointer;
       transition: box-shadow 0.2s;
@@ -49,9 +51,10 @@
       background: #f0f0f0;
     }
     .icon {
-      width: 32px;
-      height: 32px;
+      width: 48px;
+      height: 48px;
       margin-right: 12px;
+      flex-shrink: 0; /* keep icon size even if button has limited space */
     }
     .contact {
       position: absolute;
