@@ -3,120 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Who is Holly?</title>
+  <title>Who Is The Impostor?</title>
   <style>
-    @font-face {
-      font-family: 'In your face, Joffery!';
-      src: url('https://fonts.cdnfonts.com/s/19144/InYourFaceJoffery.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
-    body {
-      font-family: 'In your face, Joffery!', 'Comic Sans MS', 'Comic Sans', cursive;
-      /* User-requested background color */
-      background-color: #bbd5ed;
-      color: #222;
-      text-align: center;
+    @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
+    
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    h1 {
-      margin-top: 40px;
-      font-size: 2.2em;
-    }
-    .menu {
+
+    body {
+      font-family: 'Kalam', cursive;
+      background: linear-gradient(135deg, #2a3747 0%, #1a2332 50%, #0f1419 100%);
+      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      margin: 40px 0 20px 0;
-      gap: 20px;
+      align-items: center;
+      overflow: hidden;
     }
-    .menu-btn {
+
+    .game-container {
+      width: 900px;
+      height: 600px;
+      background: linear-gradient(135deg, #87ceeb 0%, #b8d4f0 50%, #c9ddf5 100%);
+      border: 12px solid #4a5568;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 
+        inset 0 0 20px rgba(255,255,255,0.3),
+        0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .game-container::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      background: linear-gradient(45deg, #718096, #a0aec0, #e2e8f0, #a0aec0, #718096);
+      border-radius: 26px;
+      z-index: -1;
+    }
+
+    .title {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 36px;
+      font-weight: 700;
+      color: #2d3748;
+      text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+
+    .voting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 40px;
+      margin-bottom: 20px;
+    }
+
+    .player-option {
+      background: rgba(255,255,255,0.9);
+      border: 3px solid #4a5568;
+      border-radius: 15px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
-      background: #fff;
-      border: 2px solid #222;
-      border-radius: 16px;
-      padding: 12px 28px;
-      /* Ensure the button is tall enough to fit larger icons */
-      min-height: 64px;
-      font-size: 1.3em;
       cursor: pointer;
-      transition: box-shadow 0.2s;
-      box-shadow: 2px 2px 0 #ccc;
-      margin: 8px;
+      transition: all 0.2s ease;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      height: 70px;
     }
-    .menu-btn:hover {
-      box-shadow: 4px 4px 0 #bbb;
-      background: #f0f0f0;
+
+    .player-option:hover {
+      background: rgba(255,255,255,1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    .icon {
-      width: 48px;
-      height: 48px;
-      margin-right: 12px;
-      flex-shrink: 0; /* keep icon size even if button has limited space */
+
+    .player-option.dead {
+      background: rgba(150,150,150,0.7);
+      border-color: #666;
     }
-    .contact {
+
+    .player-option.dead .player-name {
+      text-decoration: line-through;
+      color: #666;
+    }
+
+    .among-us-character {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .player-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2d3748;
+      flex-grow: 1;
+    }
+
+    .vote-badge {
       position: absolute;
-      top: 24px;
-      right: 32px;
-      text-align: right;
+      top: -8px;
+      left: -8px;
+      width: 32px;
+      height: 32px;
+      background: #e53e3e;
+      border: 3px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
-    .contact img {
-      width: 40px;
-      vertical-align: middle;
+
+    .bottom-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      margin-top: 20px;
     }
-    .contact span {
-      display: block;
-      font-size: 1em;
-      margin-top: 4px;
+
+    .skip-vote {
+      background: #4a5568;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Kalam', cursive;
     }
-    .visitor {
-      margin-top: 60px;
-      font-size: 1.2em;
+
+    .skip-vote:hover {
+      background: #2d3748;
+      transform: translateY(-2px);
     }
+
+    .contact-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: #4a5568;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Kalam', cursive;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .contact-button:hover {
+      background: #2d3748;
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    /* Character colors using CSS filters */
+    .char-green { filter: hue-rotate(80deg) saturate(1.2); }
+    .char-yellow { filter: hue-rotate(40deg) saturate(1.1); }
+    .char-black { filter: grayscale(100%) brightness(0.3); }
+    .char-orange { filter: hue-rotate(20deg) saturate(1.3); }
+    .char-purple { filter: hue-rotate(280deg) saturate(1.2); }
+    .char-cyan { filter: hue-rotate(180deg) saturate(1.1); }
+    .char-brown { filter: hue-rotate(30deg) saturate(0.8) brightness(0.7); }
+    .char-red { filter: hue-rotate(0deg) saturate(1.2); }
+    .char-blue { filter: hue-rotate(240deg) saturate(1.1); }
+    .char-lime { filter: hue-rotate(90deg) saturate(1.3) brightness(1.2); }
   </style>
 </head>
 <body>
-  <div class="contact">
-    <a href="mailto:your@email.com"><img src="https://img.icons8.com/ios-filled/50/000000/chat.png" alt="Contact"></a>
-    <span>Contact me</span>
+  <div class="game-container">
+    <a href="mailto:amongus@gmail.com" class="contact-button">Contact Me</a>
+    <h1 class="title">Who is Holly</h1>
+    
+    <div class="voting-grid">
+      <a href="projects.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Projects" class="among-us-character char-green">
+        <span class="player-name">Projects</span>
+      </a>
+      
+      <a href="about.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="About Me" class="among-us-character char-yellow">
+        <span class="player-name">About Me</span>
+      </a>
+      
+      <a href="experience.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Experience" class="among-us-character char-black">
+        <span class="player-name">Experience</span>
+      </a>
+      
+      <a href="testimonials.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Testimonials" class="among-us-character char-orange">
+        <span class="player-name">Testimonials</span>
+      </a>
+      
+      <a href="anything-else.html" class="player-option">
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Anything Else" class="among-us-character char-purple">
+        <span class="player-name">Anything Else</span>
+      </a>
+      
+      <a href="contact.html" class="player-option">
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Caburum" class="among-us-character char-cyan">
+        <span class="player-name">Caburum</span>
+      </a>
+      
+      <a href="resume.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="TheImposta" class="among-us-character char-brown">
+        <span class="player-name">TheImposta</span>
+      </a>
+      
+      <a href="blog.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Guard" class="among-us-character char-red">
+        <span class="player-name">Guard</span>
+      </a>
+      
+      <a href="skills.html" class="player-option">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Yulian" class="among-us-character char-blue">
+        <span class="player-name">Yulian</span>
+      </a>
+      
+      <a href="fun.html" class="player-option dead">
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Obama" class="among-us-character char-lime">
+        <span class="player-name">Obama</span>
+      </a>
+    </div>
+    
+    <div class="bottom-section">
+      <button class="skip-vote" onclick="window.location.href='index.html'">SKIP VOTE</button>
+    </div>
   </div>
-  <h1>Who is Holly?</h1>
-  <div class="menu">
-    <a class="menu-btn" href="about.html">
-      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(80deg);" alt="About">
-      About me
-    </a>
-    <a class="menu-btn" href="experience.html">
-      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: grayscale(100%);" alt="Experience">
-      Experience
-    </a>
-    <a class="menu-btn" href="projects.html">
-      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(240deg);" alt="Projects">
-      Projects
-    </a>
-    <a class="menu-btn" href="testimonials.html">
-      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: hue-rotate(300deg);" alt="Testimonials">
-      Testimonials
-    </a>
-    <a class="menu-btn" href="anything-else.html">
-      <img class="icon" src="https://img.icons8.com/color/48/000000/among-us.png" style="filter: grayscale(60%);" alt="Anything else">
-      Anything else
-    </a>
-  </div>
-  <div class="visitor" id="visitor-count">
-    You are visitor number: <span id="visitorNum">...</span>
-  </div>
+
   <script>
-    // Simple visitor counter: starts at 0, increases by 1 each time page is opened
-    let visitorNum = localStorage.getItem('visitorNum');
-    if (!visitorNum) {
-      visitorNum = 0;
-    }
-    visitorNum = parseInt(visitorNum, 10) + 1;
-    localStorage.setItem('visitorNum', visitorNum);
-    document.getElementById('visitorNum').textContent = visitorNum;
+
+    // Add click sound effect (optional)
+    document.querySelectorAll('.player-option').forEach(option => {
+      option.addEventListener('click', (e) => {
+        // Add a subtle click effect
+        e.currentTarget.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          e.currentTarget.style.transform = '';
+        }, 100);
+      });
+    });
   </script>
 </body>
 </html>
