@@ -295,3 +295,22 @@ body {
 .about-page p {
   line-height: 1.6;
 }
+
+
+/* clickable full-size background link inside the container */
+.game-container .bg-link {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* sits above the background/overlay but below content */
+  display: block;
+  text-indent: -9999px; /* hide text for accessibility fallback */
+}
+
+/* ensure links inside content are still clickable */
+.game-container.page-bg-image > *[style],
+.game-container.page-bg-image > * {
+  z-index: 1;
+}
+
+/* Ensure explicitly disabled player-option elements are non-interactive */
+/* (disabled styles removed - restored interactive anchors) */
