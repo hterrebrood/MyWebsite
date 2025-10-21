@@ -211,3 +211,24 @@ body {
 
 /* slightly reduce overall game-container padding on testimonials page */
 .testimonials-page { padding-top: 10px; padding-bottom: 10px; }
+
+/* Experience page styles */
+.experience-page .experience-content {
+  padding: 24px 40px;
+  color: #2d3748;
+}
+.fluent-list {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.fluent-list li {
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #4a5568;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
