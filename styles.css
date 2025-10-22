@@ -313,3 +313,39 @@ body {
 }
 
 
+/* Top-right social buttons (GitHub / LinkedIn) */
+.top-right-actions {
+  position: absolute;
+  top: 18px;
+  right: 120px; /* leave space for contact-button */
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.social-button {
+  background: #2d3748;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Kalam', cursive;
+  transition: all 0.15s ease;
+  display: inline-block;
+  font-size: 13px;
+}
+.social-button:hover { transform: translateY(-2px); background: #1f2933; }
+.social-button.linkedin { background: #0a66c2; }
+.social-button.linkedin:hover { background: #084c9a; }
+
+/* Scoped social actions for Anything Else page */
+.anything-else-page .social-actions {
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
