@@ -43,38 +43,58 @@
         <span class="player-name">Anything Else</span>
       </a>
       
-      <a href="contact.html" class="player-option">
-        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Mr. Nolan" class="among-us-character char-cyan">
-        <span class="player-name">Mr. Nolan</span>
-      </a>
-      
-      <a href="resume.html" class="player-option">
+      <div class="player-option dead">
         <div class="vote-badge">I VOTED</div>
-        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="TheImposta" class="among-us-character char-brown">
-        <span class="player-name">TheImposta</span>
-      </a>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Deets" class="among-us-character char-red">
+        <span class="player-name">Mr.Nolan</span>
+      </div>
       
-      <a href="blog.html" class="player-option">
+      <div class="player-option dead">
+        <div class="vote-badge">I VOTED</div>
+        <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Deets" class="among-us-character char-red">
+        <span class="player-name">TheImposta</span>
+      </div>
+      
+      <div class="player-option dead">
         <div class="vote-badge">I VOTED</div>
         <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Deets" class="among-us-character char-red">
         <span class="player-name">Deets</span>
-      </a>
+      </div>
       
-      <a href="skills.html" class="player-option">
+      <div class="player-option dead">
         <div class="vote-badge">I VOTED</div>
         <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Sherwin" class="among-us-character char-blue">
         <span class="player-name">Sherwin</span>
-      </a>
+      </div>
       
-      <a href="fun.html" class="player-option dead">
+      <div class="player-option dead">
         <img src="https://img.icons8.com/color/48/000000/among-us.png" alt="Obama" class="among-us-character char-lime">
         <span class="player-name">Obama</span>
-      </a>
+      </div>
     </div>
     
     <div class="bottom-section">
-      <button class="skip-vote" onclick="window.location.href='index.html'">SKIP VOTE</button>
+      <div class="visit-counter" aria-live="polite">
+        <span class="visit-count">0</span>
+        <span class="visit-label">visits (this browser)</span>
+      </div>
     </div>
+    <script>
+      (function(){
+        try {
+          var key = 'myWebsiteVisitCount';
+          var raw = localStorage.getItem(key);
+          var count = raw ? parseInt(raw, 10) : 0;
+          if (isNaN(count)) count = 0;
+          count = count + 1;
+          localStorage.setItem(key, String(count));
+          var el = document.querySelector('.visit-count');
+          if (el) el.textContent = count;
+        } catch (e) {
+          console.error('Visit counter error', e);
+        }
+      })();
+    </script>
   </div>
 
 </body>
