@@ -129,18 +129,6 @@ body {
   margin-top: 20px;
 }
 
-.skip-vote {
-  background: #4a5568;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 30px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: 'Kalam', cursive;
-}
 
 .skip-vote:hover {
   background: #2d3748;
@@ -296,33 +284,6 @@ body {
   line-height: 1.6;
 }
 
-
-/* clickable full-size background link inside the container */
-.game-container .bg-link {
-  position: absolute;
-  inset: 0;
-  z-index: 0; /* sits above the background/overlay but below content */
-  display: block;
-  text-indent: -9999px; /* hide text for accessibility fallback */
-}
-
-/* ensure links inside content are still clickable */
-.game-container.page-bg-image > *[style],
-.game-container.page-bg-image > * {
-  z-index: 1;
-}
-
-
-/* Top-right social buttons (GitHub / LinkedIn) */
-.top-right-actions {
-  position: absolute;
-  top: 18px;
-  right: 120px; /* leave space for contact-button */
-  display: flex;
-  gap: 8px;
-  z-index: 2;
-}
-
 .social-button {
   background: #2d3748;
   color: white;
@@ -347,7 +308,6 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-
 /* Visit counter styling to replace skip-vote button */
 .visit-counter {
   background: #4a5568;
@@ -361,11 +321,5 @@ body {
 }
 .visit-counter .visit-count { font-size: 18px; }
 .visit-counter .visit-label { font-size: 14px; opacity: 0.9; }
-
-/* center the visit-counter inside the bottom section */
-.visit-counter {
-  margin: 0 auto; /* centers the counter when inside a flex container */
-  text-align: center;
-}
 
 
