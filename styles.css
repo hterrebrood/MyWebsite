@@ -283,7 +283,14 @@ body {
 .about-page p {
   line-height: 1.6;
 }
-
+.about-image {
+  max-width: 48%;
+  max-height: 140px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
 .social-button {
   background: #2d3748;
   color: white;
