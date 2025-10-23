@@ -362,4 +362,10 @@ body {
 .visit-counter .visit-count { font-size: 18px; }
 .visit-counter .visit-label { font-size: 14px; opacity: 0.9; }
 
+/* center the visit-counter inside the bottom section */
+.visit-counter {
+  margin: 0 auto; /* centers the counter when inside a flex container */
+  text-align: center;
+}
+
 
